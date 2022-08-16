@@ -1,6 +1,9 @@
 import scrapy
 from scrapy.crawler import CrawlerProcess
 
+final_titles = []
+final_text = []
+
 
 class RedditSpider(scrapy.Spider):
     name = "RedditSpider"
@@ -25,8 +28,13 @@ class RedditSpider(scrapy.Spider):
             yield response.follow(url=url, callback=self.get_post_information)
 
     def get_post_information(self, response):
-        pass
         #web scraping each individual post
+        titles = response.css('h1._eYtD2XCVieq6emjKBH3m::text').extract()
+        final_titles.append(titles[0])
+        print(titles[0])
+        text = response.css('div._292iotee39Lmt0MkQZ2hPV ::text').extract()
+        final_text.append(text[0])
+        print(text[0])
 
 
 process = CrawlerProcess()
