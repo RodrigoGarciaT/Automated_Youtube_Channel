@@ -39,21 +39,16 @@ class RedditSpider(scrapy.Spider):
         final_text.append(text)
 
 
-def main ():
+def main():
     process = CrawlerProcess()
     process.crawl(RedditSpider)
     process.start()
 
     engine.setProperty('voice', voice[2].id)
-    say = ''
-    print(final_titles[10])
-    print(' ')
-    for i in final_text[10]:
-        say += i
-        print(i)
-        print(' ')
 
-    return final_text[10][1]
+    engine.save_to_file(final_text[6][0], 'audio.mp3')
+    return final_text
+
     '''
     engine.save_to_file(say, 'audio.mp3')
     engine.runAndWait()

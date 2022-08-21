@@ -17,20 +17,24 @@ def split_text_into_lines(text):
         lines.append(actual_line)
 
 
-text = RedditScraper.main()
-x = 20
-y = 20
-line_space = 30
-print(len(text))
-split_text_into_lines(text)
+def img_converter(say):
+    text = say
+    x = 20
+    y = 20
+    line_space = 30
+    print(len(text))
+    split_text_into_lines(text)
 
-new = Image.new('RGB', (1000, len(lines)*line_space+50), color=(26, 26, 27))
-d = ImageDraw.Draw(new)
-fnt = ImageFont.truetype("arial.ttf", 25)
+    new = Image.new('RGB', (1000, len(lines)*line_space+50), color=(26, 26, 27))
+    d = ImageDraw.Draw(new)
+    fnt = ImageFont.truetype("arial.ttf", 25)
 
-print(lines)
-for paragraph in lines:
-    d.text((x, y), paragraph, font=fnt, fill=(255, 255, 255))
-    y += line_space
-print(x, y)
-new.save('paragraph.jpg')
+    print(lines)
+    for paragraph in lines:
+        d.text((x, y), paragraph, font=fnt, fill=(255, 255, 255))
+        y += line_space
+    print(x, y)
+    print(text)
+    new.save('paragraph.jpg')
+    return new
+
