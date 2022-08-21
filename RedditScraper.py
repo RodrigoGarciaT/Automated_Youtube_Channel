@@ -6,7 +6,7 @@ voice = engine.getProperty('voices')
 final_links = []
 final_titles = []
 final_text = []
-story = 0
+
 
 class RedditSpider(scrapy.Spider):
     name = "RedditSpider"
@@ -44,6 +44,14 @@ process.crawl(RedditSpider)
 process.start()
 
 engine.setProperty('voice', voice[2].id)
-engine.say(final_titles[7])
-engine.say(final_text[7])
+say = ''
+print(final_titles[10])
+print(' ')
+for i in final_text[10]:
+    say += i
+    print(i)
+    print(' ')
+
+engine.save_to_file(say, 'audio.mp3')
 engine.runAndWait()
+#print(say)
