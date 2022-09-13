@@ -1,9 +1,8 @@
 from PIL import Image, ImageDraw, ImageFont
 import RedditScraper
-lines = []
 
 
-def split_text_into_lines(text):
+def split_text_into_lines(text, lines):
     max_length = 77
     actual_line = ''
     for word in text.split():
@@ -15,15 +14,17 @@ def split_text_into_lines(text):
 
     if len(actual_line):
         lines.append(actual_line)
+    return lines
 
 
 def img_converter(say):
+    lines = []
     text = say
     x = 20
     y = 20
     line_space = 30
     print(len(text))
-    split_text_into_lines(text)
+    lines = split_text_into_lines(text, lines)
 
     new = Image.new('RGB', (1000, len(lines)*line_space+50), color=(26, 26, 27))
     d = ImageDraw.Draw(new)
@@ -36,5 +37,6 @@ def img_converter(say):
     print(x, y)
     print(text)
     new.save('paragraph.jpg')
+    lines.clear()
     return new
 
