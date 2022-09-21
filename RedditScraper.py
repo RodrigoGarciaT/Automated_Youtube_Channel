@@ -36,6 +36,8 @@ class RedditSpider(scrapy.Spider):
         final_links.append(response.url)
         final_titles.append(titles[0])
         text = response.xpath('//div[@data-test-id="post-content"]').css('div._292iotee39Lmt0MkQZ2hPV ::text').extract()
+        #text = titles[0]+text
+        text.insert(0,titles[0])
         final_text.append(text)
 
 
@@ -45,7 +47,6 @@ def main():
     process.start()
 
     engine.setProperty('voice', voice[2].id)
-
     engine.save_to_file(final_text[6][0], 'audio.mp3')
     return final_text
 

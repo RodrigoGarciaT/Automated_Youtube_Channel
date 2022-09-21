@@ -38,5 +38,8 @@ def img_converter(say):
     print(text)
     new.save('paragraph.jpg')
     lines.clear()
-    return new
+    im2 =Image.open('background.jpg')
+    new = Image.open('paragraph.jpg')
+    im2.paste(new,(0, 50))
+    return im2
 

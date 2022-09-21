@@ -55,3 +55,4 @@ for paragraph in final_text[5]:
 final_clip = concatenate_videoclips(clips, method="compose")
 final_clip.write_videofile("output_1.mp4")
 print(len(clips))
+
